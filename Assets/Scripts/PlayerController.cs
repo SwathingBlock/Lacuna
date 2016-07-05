@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     const int STATE_WALL_CLIMB = 5;
     const int STATE_CLIMB_WALK = 6;
     const int STATE_CLIMB_IDLE = 7;
+	const int STATE_CRAWL = 8;
 
     string wallClimbFileName;
     Vector2 imageOffset; // off the current image ( read on file name )
@@ -165,15 +166,30 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetKey("down") && isGrounded) {
             currentAnimationState = STATE_CROUCH;
             animator.SetInteger("state", STATE_CROUCH);
-            allowHorizontal = false;
+
+			if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle")) {
+				allowHorizontal = true;
+			}
+			if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out") || this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In")) {
+				allowHorizontal = false;
+			}
+
         }
         //horizontal movement animations
         if ((Input.GetKeyDown("right") || Input.GetKey("right") || Input.GetKey("left") || Input.GetKeyDown("left")) && allowHorizontal )
         {
             isMoving = true;
-            Debug.Log("player moving");
-            animator.SetInteger("state", STATE_WALK);
-            isMoving = true;
+			if (Input.GetKey("down")) {
+				Debug.Log ("player moving");
+				animator.SetInteger ("state", STATE_CRAWL);
+				currentAnimationState = STATE_CRAWL;
+			} 
+			else {
+			
+				Debug.Log ("player moving");
+				animator.SetInteger ("state", STATE_WALK);
+				currentAnimationState = STATE_WALK;
+			}
             if (currentAnimationState == STATE_WALK_JUMP)
             {
                 transform.Translate(Vector2.left * (walkSpeed * 1.9f) * Time.deltaTime);
