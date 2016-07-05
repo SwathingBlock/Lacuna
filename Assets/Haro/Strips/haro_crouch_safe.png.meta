@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: 781a3379476a45d4d9fccdbb02afa912
+timeCreated: 1466999300
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: haro_crouch_safe_0
+    21300002: haro_crouch_safe_1
+    21300004: haro_crouch_safe_2
+    21300006: haro_crouch_safe_3
+    21300008: haro_crouch_safe_4
+    21300010: haro_crouch_safe_5
+    21300012: haro_crouch_safe_6
+    21300014: haro_crouch_safe_7
+    21300016: haro_crouch_safe_8
+    21300018: haro_crouch_safe_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: haro_crouch_safe_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 792
+        width: 211
+        height: 526
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 88.5, y: 0}
+        - {x: 77.5, y: 20}
+        - {x: 104.5, y: 110}
+        - {x: 105.5, y: 117}
+        - {x: 105.5, y: 207}
+        - {x: 55.5, y: 407}
+        - {x: 79.5, y: 481}
+        - {x: 77.5, y: 525}
+        - {x: 74.5, y: 526}
+        - {x: -54.5, y: 526}
+        - {x: -105.5, y: 518}
+        - {x: -105.5, y: 360}
+        - {x: -83.5, y: 256}
+        - {x: -79.5, y: 239}
+        - {x: -77.5, y: 230}
+        - {x: -68.5, y: 225}
+        - {x: -47.5, y: 236}
+        - {x: -43.5, y: 239}
+        - {x: -39.5, y: 250}
+        - {x: -43.5, y: 239}
+        - {x: -87.5, y: 195}
+        - {x: -105.5, y: 131}
+        - {x: -105.5, y: 103}
+        - {x: -79.5, y: 2}
+        - {x: -68.5, y: 0}
+        - {x: -4.5, y: 0}
+        - {x: 7.5, y: 12}
+        - {x: 27.5, y: 6}
+        - {x: 31.5, y: 0}
+    - name: haro_crouch_safe_1
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 792
+        width: 264
+        height: 329
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 132, y: 35}
+        - {x: 132, y: 140}
+        - {x: 53, y: 225}
+        - {x: 60, y: 290}
+        - {x: 48, y: 329}
+        - {x: -6, y: 329}
+        - {x: -84, y: 320}
+        - {x: -105, y: 303}
+        - {x: -113, y: 217}
+        - {x: -92, y: 160}
+        - {x: -109, y: 151}
+        - {x: -129, y: 135}
+        - {x: -132, y: 124}
+        - {x: -132, y: 77}
+        - {x: -105, y: 46}
+        - {x: -56, y: 0}
+        - {x: 113, y: 0}
+    - name: haro_crouch_safe_2
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 792
+        width: 271
+        height: 313
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46.5, y: 264}
+        - {x: -4.5, y: 313}
+        - {x: -61.5, y: 313}
+        - {x: -90.5, y: 300}
+        - {x: -103.5, y: 263}
+        - {x: -69.5, y: 205}
+        - {x: -59.5, y: 173}
+        - {x: -135.5, y: 104}
+        - {x: -135.5, y: 45}
+        - {x: -97.5, y: 29}
+        - {x: -64.5, y: 0}
+        - {x: 106.5, y: 0}
+        - {x: 135.5, y: 49}
+        - {x: 135.5, y: 111}
+        - {x: 92.5, y: 142}
+    - name: haro_crouch_safe_3
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 792
+        width: 251
+        height: 323
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47.5, y: 227}
+        - {x: 40.5, y: 265}
+        - {x: 63.5, y: 284}
+        - {x: 46.5, y: 323}
+        - {x: -62.5, y: 323}
+        - {x: -102.5, y: 313}
+        - {x: -101.5, y: 244}
+        - {x: -80.5, y: 217}
+        - {x: -61.5, y: 196}
+        - {x: -125.5, y: 121}
+        - {x: -125.5, y: 46}
+        - {x: -116.5, y: 18}
+        - {x: -55.5, y: 29}
+        - {x: -59.5, y: 7}
+        - {x: -57.5, y: 0}
+        - {x: 97.5, y: 0}
+        - {x: 125.5, y: 39}
+        - {x: 125.5, y: 90}
+        - {x: 116.5, y: 113}
+    - name: haro_crouch_safe_4
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 792
+        width: 246
+        height: 325
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 103, y: 160}
+        - {x: 48, y: 258}
+        - {x: 79, y: 317}
+        - {x: 72, y: 325}
+        - {x: -97, y: 325}
+        - {x: -107, y: 279}
+        - {x: -123, y: 147}
+        - {x: -123, y: 57}
+        - {x: -121, y: 47}
+        - {x: -91, y: 26}
+        - {x: -44, y: 35}
+        - {x: -56, y: 7}
+        - {x: -55, y: 0}
+        - {x: -5, y: 0}
+        - {x: 3, y: 5}
+        - {x: 46, y: 0}
+        - {x: 94, y: 0}
+        - {x: 123, y: 31}
+        - {x: 123, y: 101}
+    - name: haro_crouch_safe_5
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 167
+        width: 249
+        height: 324
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 52.5, y: 232}
+        - {x: 61.5, y: 324}
+        - {x: -62.5, y: 324}
+        - {x: -74.5, y: 320}
+        - {x: -95.5, y: 306}
+        - {x: -98.5, y: 253}
+        - {x: -73.5, y: 207}
+        - {x: -58.5, y: 197}
+        - {x: -124.5, y: 106}
+        - {x: -124.5, y: 51}
+        - {x: -118.5, y: 41}
+        - {x: -102.5, y: 28}
+        - {x: -63.5, y: 30}
+        - {x: -60.5, y: 0}
+        - {x: 91.5, y: 0}
+        - {x: 124.5, y: 42}
+        - {x: 124.5, y: 96}
+        - {x: 121.5, y: 107}
+    - name: haro_crouch_safe_6
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 167
+        width: 251
+        height: 323
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 47.5, y: 227}
+        - {x: 40.5, y: 265}
+        - {x: 63.5, y: 284}
+        - {x: 46.5, y: 323}
+        - {x: -62.5, y: 323}
+        - {x: -102.5, y: 313}
+        - {x: -101.5, y: 244}
+        - {x: -80.5, y: 217}
+        - {x: -61.5, y: 196}
+        - {x: -125.5, y: 121}
+        - {x: -125.5, y: 46}
+        - {x: -116.5, y: 18}
+        - {x: -55.5, y: 29}
+        - {x: -59.5, y: 7}
+        - {x: -57.5, y: 0}
+        - {x: 97.5, y: 0}
+        - {x: 125.5, y: 39}
+        - {x: 125.5, y: 90}
+        - {x: 116.5, y: 113}
+    - name: haro_crouch_safe_7
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 167
+        width: 244
+        height: 396
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27, y: 20}
+        - {x: 28, y: 28}
+        - {x: 55, y: 0}
+        - {x: 99, y: 0}
+        - {x: 122, y: 41}
+        - {x: 122, y: 134}
+        - {x: 107, y: 189}
+        - {x: 73, y: 226}
+        - {x: 76, y: 378}
+        - {x: 41, y: 396}
+        - {x: -68, y: 396}
+        - {x: -96, y: 388}
+        - {x: -67, y: 189}
+        - {x: -122, y: 116}
+        - {x: -122, y: 41}
+        - {x: -55, y: 0}
+        - {x: -11, y: 0}
+        - {x: 1, y: 1}
+        - {x: 14, y: 2}
+        - {x: 24, y: 9}
+    - name: haro_crouch_safe_8
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 167
+        width: 170
+        height: 613
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 85, y: 0}
+        - {x: 85, y: 7}
+        - {x: 83, y: 11}
+        - {x: 85, y: 32}
+        - {x: 85, y: 121}
+        - {x: 73, y: 189}
+        - {x: 73, y: 260}
+        - {x: 85, y: 318}
+        - {x: 85, y: 373}
+        - {x: 49, y: 467}
+        - {x: 85, y: 485}
+        - {x: 85, y: 541}
+        - {x: 65, y: 604}
+        - {x: 36, y: 613}
+        - {x: -35, y: 613}
+        - {x: -85, y: 566}
+        - {x: -85, y: 501}
+        - {x: -77, y: 492}
+        - {x: -41, y: 489}
+        - {x: -66, y: 395}
+        - {x: -75, y: 280}
+        - {x: -57, y: 243}
+        - {x: -45, y: 247}
+        - {x: -43, y: 311}
+        - {x: -35, y: 236}
+        - {x: -66, y: 94}
+        - {x: -80, y: 0}
+        - {x: 2, y: 0}
+        - {x: 17, y: 48}
+        - {x: 33, y: 0}
+    - name: haro_crouch_safe_9
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 165
+        width: 195
+        height: 610
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 34.5, y: 0}
+        - {x: 69.5, y: 0}
+        - {x: 75.5, y: 7}
+        - {x: 72.5, y: 94}
+        - {x: 97.5, y: 126}
+        - {x: 97.5, y: 207}
+        - {x: 71.5, y: 270}
+        - {x: 82.5, y: 387}
+        - {x: 33.5, y: 489}
+        - {x: 97.5, y: 541}
+        - {x: 97.5, y: 576}
+        - {x: 82.5, y: 606}
+        - {x: 40.5, y: 610}
+        - {x: -69.5, y: 610}
+        - {x: -82.5, y: 608}
+        - {x: -97.5, y: 582}
+        - {x: -97.5, y: 536}
+        - {x: -23.5, y: 486}
+        - {x: -63.5, y: 457}
+        - {x: -84.5, y: 254}
+        - {x: -57.5, y: 251}
+        - {x: -45.5, y: 281}
+        - {x: -42.5, y: 282}
+        - {x: -73.5, y: 214}
+        - {x: -81.5, y: 181}
+        - {x: -34.5, y: 34}
+        - {x: -96.5, y: 2}
+        - {x: -89.5, y: 0}
+        - {x: -15.5, y: 0}
+        - {x: -12.5, y: 7}
+        - {x: 33.5, y: 78}
+        - {x: 18.5, y: 4}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

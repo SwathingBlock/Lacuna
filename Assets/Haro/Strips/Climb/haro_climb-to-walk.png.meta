@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 2a844bc333b887048a0198df54e517d0
+timeCreated: 1467002184
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: haro_climb-to-walk_0
+    21300002: haro_climb-to-walk_1
+    21300004: haro_climb-to-walk_2
+    21300006: haro_climb-to-walk_3
+    21300008: haro_climb-to-walk_4
+    21300010: haro_climb-to-walk_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: haro_climb-to-walk_0
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 1121
+        width: 290
+        height: 377
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 145, y: 240}
+        - {x: 91, y: 304}
+        - {x: -5, y: 377}
+        - {x: -125, y: 377}
+        - {x: -145, y: 345}
+        - {x: -145, y: 300}
+        - {x: -139, y: 276}
+        - {x: -98, y: 250}
+        - {x: -63, y: 283}
+        - {x: -33, y: 206}
+        - {x: -51, y: 112}
+        - {x: -62, y: 30}
+        - {x: -46, y: 12}
+        - {x: -37, y: 10}
+        - {x: 12, y: 15}
+        - {x: 33, y: 26}
+        - {x: 20, y: 5}
+        - {x: 20, y: 0}
+        - {x: 84, y: 0}
+        - {x: 105, y: 16}
+        - {x: 90, y: 33}
+        - {x: 145, y: 171}
+    - name: haro_climb-to-walk_1
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 1120
+        width: 303
+        height: 486
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 151.5, y: 116}
+        - {x: 151.5, y: 224}
+        - {x: 95.5, y: 322}
+        - {x: 18.5, y: 401}
+        - {x: -57.5, y: 486}
+        - {x: -107.5, y: 486}
+        - {x: -143.5, y: 465}
+        - {x: -151.5, y: 459}
+        - {x: -151.5, y: 390}
+        - {x: -120.5, y: 354}
+        - {x: -75.5, y: 378}
+        - {x: -75.5, y: 334}
+        - {x: -21.5, y: 278}
+        - {x: -67.5, y: 194}
+        - {x: -82.5, y: 105}
+        - {x: -69.5, y: 41}
+        - {x: -134.5, y: 39}
+        - {x: -96.5, y: 6}
+        - {x: -46.5, y: 0}
+        - {x: -43.5, y: 0}
+        - {x: -39.5, y: 6}
+        - {x: -38.5, y: 16}
+        - {x: -26.5, y: 60}
+        - {x: 32.5, y: 48}
+        - {x: 66.5, y: 1}
+        - {x: 70.5, y: 0}
+        - {x: 131.5, y: 0}
+        - {x: 151.5, y: 40}
+        - {x: 151.5, y: 48}
+        - {x: 129.5, y: 81}
+    - name: haro_climb-to-walk_2
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 1119
+        width: 297
+        height: 558
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 110.5, y: 0}
+        - {x: 143.5, y: 0}
+        - {x: 148.5, y: 20}
+        - {x: 148.5, y: 81}
+        - {x: 118.5, y: 98}
+        - {x: 148.5, y: 137}
+        - {x: 148.5, y: 199}
+        - {x: 141.5, y: 245}
+        - {x: 115.5, y: 280}
+        - {x: -23.5, y: 437}
+        - {x: 5.5, y: 467}
+        - {x: -7.5, y: 502}
+        - {x: -46.5, y: 552}
+        - {x: -59.5, y: 558}
+        - {x: -109.5, y: 558}
+        - {x: -135.5, y: 552}
+        - {x: -148.5, y: 539}
+        - {x: -148.5, y: 459}
+        - {x: -138.5, y: 441}
+        - {x: -115.5, y: 431}
+        - {x: -94.5, y: 369}
+        - {x: -56.5, y: 327}
+        - {x: -68.5, y: 226}
+        - {x: -90.5, y: 169}
+        - {x: -88.5, y: 119}
+        - {x: -45.5, y: 39}
+        - {x: -100.5, y: 5}
+        - {x: -104.5, y: 0}
+        - {x: -25.5, y: 0}
+        - {x: -19.5, y: 7}
+        - {x: -26.5, y: 69}
+        - {x: 106.5, y: 47}
+    - name: haro_climb-to-walk_3
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 492
+        width: 181
+        height: 616
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90.5, y: 172}
+        - {x: 87.5, y: 185}
+        - {x: 62.5, y: 336}
+        - {x: 17.5, y: 501}
+        - {x: 50.5, y: 510}
+        - {x: 66.5, y: 540}
+        - {x: 27.5, y: 616}
+        - {x: -82.5, y: 616}
+        - {x: -88.5, y: 584}
+        - {x: -90.5, y: 576}
+        - {x: -90.5, y: 508}
+        - {x: -58.5, y: 465}
+        - {x: -39.5, y: 390}
+        - {x: -70.5, y: 307}
+        - {x: -71.5, y: 227}
+        - {x: -23.5, y: 99}
+        - {x: -32.5, y: 3}
+        - {x: -27.5, y: 0}
+        - {x: 45.5, y: 0}
+        - {x: 51.5, y: 10}
+        - {x: 59.5, y: 75}
+        - {x: 90.5, y: 95}
+    - name: haro_climb-to-walk_4
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 491
+        width: 197
+        height: 613
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 71.5, y: 286}
+        - {x: 9.5, y: 481}
+        - {x: 20.5, y: 518}
+        - {x: 62.5, y: 559}
+        - {x: 52.5, y: 592}
+        - {x: 4.5, y: 613}
+        - {x: -85.5, y: 613}
+        - {x: -96.5, y: 611}
+        - {x: -98.5, y: 602}
+        - {x: -98.5, y: 516}
+        - {x: -85.5, y: 489}
+        - {x: -60.5, y: 379}
+        - {x: -96.5, y: 337}
+        - {x: -98.5, y: 331}
+        - {x: -98.5, y: 294}
+        - {x: -80.5, y: 294}
+        - {x: -98.5, y: 229}
+        - {x: -98.5, y: 220}
+        - {x: -77.5, y: 132}
+        - {x: -55.5, y: 77}
+        - {x: -86.5, y: 32}
+        - {x: -83.5, y: 15}
+        - {x: -5.5, y: 65}
+        - {x: -3.5, y: 104}
+        - {x: 15.5, y: 26}
+        - {x: -10.5, y: 0}
+        - {x: 58.5, y: 0}
+        - {x: 90.5, y: 35}
+        - {x: 98.5, y: 83}
+        - {x: 98.5, y: 161}
+    - name: haro_climb-to-walk_5
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 489
+        width: 291
+        height: 615
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 145.5, y: 125}
+        - {x: 145.5, y: 164}
+        - {x: 104.5, y: 315}
+        - {x: 95.5, y: 419}
+        - {x: 45.5, y: 489}
+        - {x: 104.5, y: 548}
+        - {x: 106.5, y: 578}
+        - {x: 91.5, y: 597}
+        - {x: 29.5, y: 615}
+        - {x: -41.5, y: 615}
+        - {x: -69.5, y: 580}
+        - {x: -67.5, y: 523}
+        - {x: -50.5, y: 495}
+        - {x: -42.5, y: 490}
+        - {x: -32.5, y: 402}
+        - {x: -109.5, y: 361}
+        - {x: -121.5, y: 344}
+        - {x: -109.5, y: 328}
+        - {x: -89.5, y: 316}
+        - {x: -13.5, y: 372}
+        - {x: -44.5, y: 277}
+        - {x: -100.5, y: 49}
+        - {x: -145.5, y: 58}
+        - {x: -145.5, y: 39}
+        - {x: -97.5, y: 0}
+        - {x: -94.5, y: 0}
+        - {x: -72.5, y: 18}
+        - {x: -35.5, y: 83}
+        - {x: 73.5, y: 78}
+        - {x: 60.5, y: 9}
+        - {x: 63.5, y: 0}
+        - {x: 112.5, y: 0}
+        - {x: 145.5, y: 26}
+        - {x: 145.5, y: 50}
+        - {x: 131.5, y: 70}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

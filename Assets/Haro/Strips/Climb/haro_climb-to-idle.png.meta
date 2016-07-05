@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 289c8303c9fbbb0488f1549a4d65c8c0
+timeCreated: 1467002054
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: haro_climb-to-idle_0
+    21300002: haro_climb-to-idle_1
+    21300004: haro_climb-to-idle_2
+    21300006: haro_climb-to-idle_3
+    21300008: haro_climb-to-idle_4
+    21300010: haro_climb-to-idle_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: haro_climb-to-idle_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 632
+        width: 252
+        height: 483
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -126, y: 483}
+        - {x: -126, y: 239}
+        - {x: -102, y: 182}
+        - {x: -32, y: 186}
+        - {x: 0, y: 204}
+        - {x: 4, y: 218}
+        - {x: 6, y: 230}
+        - {x: 24, y: 284}
+        - {x: 41, y: 318}
+        - {x: 40, y: 318}
+        - {x: 41, y: 317}
+        - {x: 40, y: 317}
+        - {x: 12, y: 241}
+        - {x: 8, y: 228}
+        - {x: -5, y: 186}
+        - {x: 16, y: 109}
+        - {x: -11, y: 27}
+        - {x: 1, y: 5}
+        - {x: 14, y: 0}
+        - {x: 126, y: 0}
+        - {x: 126, y: 417}
+        - {x: 38, y: 483}
+    - name: haro_climb-to-idle_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 630
+        width: 232
+        height: 559
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 58, y: 436}
+        - {x: 34, y: 462}
+        - {x: 15, y: 468}
+        - {x: 2, y: 469}
+        - {x: 13, y: 471}
+        - {x: 27, y: 476}
+        - {x: 36, y: 518}
+        - {x: 13, y: 559}
+        - {x: -94, y: 559}
+        - {x: -116, y: 553}
+        - {x: -116, y: 419}
+        - {x: -46, y: 332}
+        - {x: -54, y: 258}
+        - {x: -53, y: 149}
+        - {x: 2, y: 41}
+        - {x: -38, y: 4}
+        - {x: 6, y: 1}
+        - {x: 42, y: 16}
+        - {x: 47, y: 20}
+        - {x: 38, y: 12}
+        - {x: 32, y: 9}
+        - {x: 36, y: 0}
+        - {x: 71, y: 0}
+        - {x: 87, y: 2}
+        - {x: 92, y: 11}
+        - {x: 116, y: 117}
+        - {x: 116, y: 225}
+      - - {x: 41, y: 59}
+        - {x: 38, y: 58}
+        - {x: 38, y: 54}
+        - {x: 40, y: 52}
+        - {x: 44, y: 52}
+        - {x: 45, y: 53}
+        - {x: 45, y: 59}
+    - name: haro_climb-to-idle_2
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 628
+        width: 210
+        height: 582
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84, y: 370}
+        - {x: 64, y: 472}
+        - {x: 74, y: 498}
+        - {x: 82, y: 536}
+        - {x: 29, y: 579}
+        - {x: 21, y: 582}
+        - {x: -55, y: 582}
+        - {x: -72, y: 579}
+        - {x: -105, y: 532}
+        - {x: -105, y: 473}
+        - {x: -96, y: 451}
+        - {x: -33, y: 458}
+        - {x: -52, y: 230}
+        - {x: -48, y: 137}
+        - {x: -37, y: 113}
+        - {x: -16, y: 25}
+        - {x: -42, y: 9}
+        - {x: -41, y: 4}
+        - {x: -32, y: 0}
+        - {x: -25, y: 0}
+        - {x: -2, y: 1}
+        - {x: 36, y: 14}
+        - {x: 17, y: 88}
+        - {x: 54, y: 76}
+        - {x: 44, y: 0}
+        - {x: 94, y: 0}
+        - {x: 95, y: 2}
+        - {x: 105, y: 70}
+        - {x: 105, y: 207}
+    - name: haro_climb-to-idle_3
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 629
+        width: 186
+        height: 596
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 81, y: 358}
+        - {x: 73, y: 462}
+        - {x: 24, y: 485}
+        - {x: 86, y: 519}
+        - {x: 93, y: 557}
+        - {x: 93, y: 559}
+        - {x: 83, y: 568}
+        - {x: 21, y: 596}
+        - {x: -42, y: 596}
+        - {x: -93, y: 544}
+        - {x: -93, y: 501}
+        - {x: -88, y: 493}
+        - {x: -29, y: 477}
+        - {x: -39, y: 423}
+        - {x: -56, y: 258}
+        - {x: -69, y: 126}
+        - {x: -30, y: 34}
+        - {x: -71, y: 0}
+        - {x: 13, y: 0}
+        - {x: 14, y: 2}
+        - {x: 46, y: 69}
+        - {x: 43, y: 0}
+        - {x: 92, y: 0}
+        - {x: 93, y: 32}
+        - {x: 93, y: 149}
+        - {x: 70, y: 310}
+    - name: haro_climb-to-idle_4
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 10
+        width: 185
+        height: 606
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 72.5, y: 297}
+        - {x: 79.5, y: 405}
+        - {x: 68.5, y: 465}
+        - {x: 47.5, y: 478}
+        - {x: 92.5, y: 507}
+        - {x: 92.5, y: 585}
+        - {x: 38.5, y: 606}
+        - {x: -22.5, y: 606}
+        - {x: -39.5, y: 600}
+        - {x: -92.5, y: 558}
+        - {x: -92.5, y: 514}
+        - {x: -66.5, y: 500}
+        - {x: -37.5, y: 453}
+        - {x: -75.5, y: 140}
+        - {x: -25.5, y: 34}
+        - {x: -57.5, y: 13}
+        - {x: -61.5, y: 5}
+        - {x: -50.5, y: 0}
+        - {x: -48.5, y: 0}
+        - {x: 7.5, y: 1}
+        - {x: 11.5, y: 8}
+        - {x: 4.5, y: 84}
+        - {x: 33.5, y: 11}
+        - {x: 52.5, y: 0}
+        - {x: 92.5, y: 0}
+        - {x: 92.5, y: 63}
+        - {x: 90.5, y: 118}
+    - name: haro_climb-to-idle_5
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 12
+        width: 189
+        height: 605
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40.5, y: 0}
+        - {x: 83.5, y: 0}
+        - {x: 84.5, y: 2}
+        - {x: 70.5, y: 269}
+        - {x: 73.5, y: 333}
+        - {x: 65.5, y: 445}
+        - {x: 57.5, y: 465}
+        - {x: 22.5, y: 486}
+        - {x: 94.5, y: 531}
+        - {x: 94.5, y: 570}
+        - {x: 32.5, y: 605}
+        - {x: -33.5, y: 605}
+        - {x: -94.5, y: 572}
+        - {x: -94.5, y: 523}
+        - {x: -63.5, y: 505}
+        - {x: -23.5, y: 479}
+        - {x: -46.5, y: 456}
+        - {x: -69.5, y: 268}
+        - {x: -77.5, y: 112}
+        - {x: -37.5, y: 35}
+        - {x: -72.5, y: 14}
+        - {x: -78.5, y: 1}
+        - {x: -77.5, y: 0}
+        - {x: -0.5, y: 0}
+        - {x: 1.5, y: 93}
+        - {x: 41.5, y: 64}
+        - {x: 28.5, y: 1}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
