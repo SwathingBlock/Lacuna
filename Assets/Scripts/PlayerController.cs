@@ -21,11 +21,11 @@ public class PlayerController : MonoBehaviour {
     const int STATE_IDLE_JUMP = 2;
     const int STATE_WALK_JUMP = 3;
     const int STATE_CROUCH = 4;
-
     const int STATE_WALL_CLIMB = 5;
     const int STATE_CLIMB_WALK = 6;
     const int STATE_CLIMB_IDLE = 7;
 	const int STATE_CRAWL = 8;
+	const int STATE_SPRINT = 9;
 
     string wallClimbFileName;
     Vector2 imageOffset; // off the current image ( read on file name )
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //jump
-        if (Input.GetKeyDown("up") && isGrounded) {
+		if (Input.GetKey("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out")) {
             animator.ResetTrigger("land");
             rgd.AddForce(Vector3.up * jumpSpeed);
             isGrounded = false;
@@ -187,14 +187,20 @@ public class PlayerController : MonoBehaviour {
 			else {
 			
 				Debug.Log ("player moving");
-				animator.SetInteger ("state", STATE_WALK);
-				currentAnimationState = STATE_WALK;
+				if (Input.GetKey (KeyCode.LeftShift) && isGrounded) {
+					animator.SetInteger ("state", STATE_SPRINT);
+					currentAnimationState = STATE_SPRINT;
+				} else {
+					animator.SetInteger ("state", STATE_WALK);
+					currentAnimationState = STATE_WALK;
+				}
 			}
-            if (currentAnimationState == STATE_WALK_JUMP)
-            {
-                transform.Translate(Vector2.left * (walkSpeed * 1.9f) * Time.deltaTime);
-            }
-            else { 
+			if (currentAnimationState == STATE_WALK_JUMP) {
+				transform.Translate (Vector2.left * (walkSpeed * 1.9f) * Time.deltaTime);
+			} else if (currentAnimationState == STATE_SPRINT) {
+				transform.Translate (Vector2.left * (walkSpeed * 2.8f) * Time.deltaTime);
+			}
+			else{
                 transform.Translate(Vector2.left * walkSpeed * Time.deltaTime);
             }
         }
