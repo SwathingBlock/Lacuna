@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	const int STATE_SPRINT = 9;
 
     string wallClimbFileName;
-    Vector2 imageOffset; // off the current image ( read on file name )
+    Vector3 climbImageOffset; // off the current image ( read on file name )
     bool climb = false;
     bool climbWalk = false;
     Vector3 handPosition;
@@ -51,45 +51,47 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+
     // Update is called once per frame
     void Update() {
-        string newWallClimbFileName = UnityEditor.AssetDatabase.GetAssetPath(renderer.sprite);
 
-        if (climb && newWallClimbFileName != wallClimbFileName)
-            transform.position+=parseOffset(wallClimbFileName); // reverse previous transform 
-            
+        Debug.Log("Player position: " + transform.position);
+
+        if (climb) {
+            string newWallClimbFileName = UnityEditor.AssetDatabase.GetAssetPath(renderer.sprite);
+
+            Debug.Log("Sprite name " + renderer.sprite.name);
+            if (newWallClimbFileName != wallClimbFileName)
+            {
+                transform.position -= climbImageOffset; // reverse previous transform 
+         //       renderer.flipX = false;
+            }   
+            }
     }
 
     void lateUpdate()
     {
-        
+
         if (climb)
         {
-            if (wallClimbFileName == null) {
-                wallClimbFileName = UnityEditor.AssetDatabase.GetAssetPath(renderer.sprite);
-                Debug.Log(wallClimbFileName);
+            string newWallClimbName = UnityEditor.AssetDatabase.GetAssetPath(renderer.sprite);
+            if ((wallClimbFileName == null) || newWallClimbName != wallClimbFileName)
+            {
+                if (wallClimbFileName == null) transform.position = handPosition; // first transformation set up
+                /* X=left, Y=bottom, Z=right, W=top */
+                Vector4 borders = renderer.sprite.border;
+                /* convert to bottom referencial */
+                Vector2 spriteSize = renderer.sprite.bounds.size;
+                float y = spriteSize.y - borders.w;
+                float centerx = spriteSize.x / 2;
+                float x = borders.x - centerx;
+                climbImageOffset = new Vector3(x, y, 0);
 
-                // Climb sprites are flipped
-                transform.Rotate(0, 180, 0);
+                transform.position += climbImageOffset;
+                wallClimbFileName = newWallClimbName;
+            //    renderer.flipX = true;
 
-                //Vector2 GetComponent<BoxCollider2D>().size * 0.5;
-                imageOffset = parseOffset(wallClimbFileName);
-
-                //update player position
-                transform.position = handPosition - new Vector3(imageOffset.x,imageOffset.y);
             }
-
-            string newWallClimbFileName = UnityEditor.AssetDatabase.GetAssetPath(renderer.sprite);
-
-            if (newWallClimbFileName == wallClimbFileName) return;
-            else { wallClimbFileName = newWallClimbFileName; }
-            Debug.Log(wallClimbFileName);
-
-            imageOffset = parseOffset(wallClimbFileName);
-            Debug.Log("Texture Size");
-
-            Debug.Log(imageOffset.x + " , " + imageOffset.y);
-            transform.position -= new Vector3(imageOffset.x, imageOffset.y); // Apply new texture transformation
         }
         
     }
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 
         /* Checks if player is trying to move while climbing a wall. 
            If moving triggers Climb_Walk animation, otherwise Climb_Idle */
-        climb = this.animator.GetCurrentAnimatorStateInfo(0).IsName("Wall_Climb");
+            climb = this.animator.GetCurrentAnimatorStateInfo(0).IsName("Wall_Climb");
         if (climb && (Input.GetKeyDown("left") || Input.GetKeyDown("right")))
         {
             climbWalk = true;
@@ -225,11 +227,13 @@ public class PlayerController : MonoBehaviour {
         }
         else if (coll.gameObject.tag == "Climb_Zone") // add zone
         {
+           
             climb = true;
             currentAnimationState = STATE_WALL_CLIMB;
             animator.SetTrigger("tg_climb");
             wallClimbFileName = null;
             handPosition = coll.gameObject.GetComponent<Transform>().position;
+            rgd.isKinematic = true; // disables gravity so it can hold on 
         }
 
     }
