@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        transform.position = new Vector3(player.position.x, -5/*player.position.y*/,0) + camOffSet;
+		transform.position = new Vector3(player.position.x, -5/*player.position.y*/,0) + camOffSet;
+		//SceneView.RepaintAll();
     }
+
 }
