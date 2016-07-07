@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     string wallClimbFileName;
     Vector3 climbImageOffset; // off the current image ( read on file name )
     bool climb = false;
+    bool climbHold = false;
     bool climbWalk = false;
     Vector3 handPosition;
 
@@ -102,6 +103,21 @@ public class PlayerController : MonoBehaviour {
 
         /* Checks if player is trying to move while climbing a wall. 
            If moving triggers Climb_Walk animation, otherwise Climb_Idle */
+
+        if (climbHold)
+        {
+            if (Input.GetKeyDown("up"))
+            {
+                this.animator.SetBool("Climb_Up", true);
+
+                climbHold = false;
+            } else if (Input.GetKeyDown("down"))
+            {
+                this.animator.SetBool("Climb_Cancel", true);
+            }
+            return true;
+        }
+
             climb = this.animator.GetCurrentAnimatorStateInfo(0).IsName("Wall_Climb");
         if (climb && (Input.GetKeyDown("left") || Input.GetKeyDown("right")))
         {
@@ -233,7 +249,10 @@ public class PlayerController : MonoBehaviour {
             animator.SetTrigger("tg_climb");
             wallClimbFileName = null;
             handPosition = coll.gameObject.GetComponent<Transform>().position;
+
+            transform.position = handPosition;
             rgd.isKinematic = true; // disables gravity so it can hold on 
+            climbHold = true;
         }
 
     }
