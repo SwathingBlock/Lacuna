@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
         rgd = GetComponent<Rigidbody2D>();
 
         animator.SetInteger("state", STATE_IDLE_JUMP);
-        Application.targetFrameRate = 30;
+       
 
     }
 

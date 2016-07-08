@@ -13,8 +13,10 @@ public class ScrollBackground : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // left to right movement(negative), confirmed
-		float y = Mathf.Repeat (Time.time * speed, 1);
+		float HaroSpeed = GameObject.Find ("Main Camera").GetComponent<> ().velocity.magnitude;
+
+		// left to right movement(negative), confirmeo
+		float y = Mathf.Repeat (Time.time * speed + HaroSpeed, 1);
 		Vector2 offset = new Vector2 (y, 0);
 		GetComponent<MeshRenderer>().sharedMaterial.SetTextureOffset ("_MainTex", offset);
 
