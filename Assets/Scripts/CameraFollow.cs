@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		camvel = ((player.position.x - this.transform.position.x) / Time.deltaTime)/100;
+
 		transform.position = new Vector3(player.position.x, -6/*player.position.y*/,0) + camOffSet;
 
 	
