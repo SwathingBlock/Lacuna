@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private bool isGrounded = true;
     bool isMoving = false;
     bool allowHorizontal = true;
+	ContactPoint2D feetContact;
 
 
     SpriteRenderer renderer;
@@ -38,16 +39,19 @@ public class PlayerController : MonoBehaviour {
     
 
     GameObject haro_anim;
+
+
     // Use this for initialization
     void Start() {
         haro_anim = GameObject.Find("Haro_Animation");
-
+	
         animator = haro_anim.GetComponent<Animator>();
         renderer = haro_anim.GetComponent<SpriteRenderer>();
         rgd = GetComponent<Rigidbody2D>();
 
+
         animator.SetInteger("state", STATE_IDLE_JUMP);
-       
+		currentAnimationState = STATE_IDLE;
 
     }
 
@@ -134,21 +138,32 @@ public class PlayerController : MonoBehaviour {
             allowHorizontal = false;
         }
         else { allowHorizontal = true; }
+		if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crawl") ||
+		    this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle") ||
+		    this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out") ||
+		    this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In")) {
 
+
+	
+		}
         if (climbControll()) { Debug.Log("Haro climbing: blocking input"); return; } 
 
 
         //idle animation if no movement keys pressed
+		Debug.Log(isGrounded);
         if (!Input.GetKeyDown("left") && !Input.GetKeyDown("right") && !Input.GetKeyDown("up") && !Input.GetKeyDown("down") && isGrounded == true) {
             animator.SetInteger("state", STATE_IDLE);
             currentAnimationState = STATE_IDLE;
             isMoving = false;
+
         }
 
         //jump
 		if (Input.GetKey("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out")) {
-            animator.ResetTrigger("land");
+            
+
             rgd.AddForce(Vector3.up * jumpSpeed);
+			Debug.Log ("w");
             isGrounded = false;
             isMoving = true;
             //walk>jump , horizontal movemente allowed
@@ -157,6 +172,7 @@ public class PlayerController : MonoBehaviour {
                 currentAnimationState = STATE_WALK_JUMP;
 
             } else {
+				
                 //idle jump, no horzontal movement allowed (for now)
                 allowHorizontal = false;
                 currentAnimationState = STATE_IDLE_JUMP;
@@ -214,25 +230,32 @@ public class PlayerController : MonoBehaviour {
     // Check if player has collided with the floor
     void OnCollisionEnter2D(Collision2D coll)       //collision detection
     {
-        if (coll.gameObject.name == "Floor")
-        {
-            animator.SetTrigger("land");
+		if (coll.gameObject.name == "Floor" || coll.gameObject.name == "Moving_Rack")
+		{
+			currentAnimationState = STATE_IDLE;
+
+
             isGrounded = true;
             if (currentAnimationState != STATE_IDLE) {
                 animator.SetInteger("state", STATE_IDLE);
                 currentAnimationState = STATE_IDLE;
             }
+		
         }
-        else if (coll.gameObject.tag == "Climb_Zone") // add zone
-        {
-            climb = true;
-            currentAnimationState = STATE_WALL_CLIMB;
-            animator.SetTrigger("tg_climb");
-            wallClimbFileName = null;
-            handPosition = coll.gameObject.GetComponent<Transform>().position;
-        }
+      
 
     }
+	void OnCollisionStay2D(Collision2D coll)  {
+		//isGrounded = true;
+		if(currentAnimationState == STATE_IDLE_JUMP){ Debug.Log("y");currentAnimationState = STATE_IDLE;}
+		feetContact = coll.contacts [0];
+		if (feetContact.point.x > 40.5 && feetContact.point.y < 42) {
+			if (Input.GetKey(KeyCode.E)){
+				GameObject.Find ("Moving_Rack").GetComponent<Rigidbody2D> ().isKinematic = false;
+			}
+		
+		}
+	}
 
     void changeDirection(string direction)
     {

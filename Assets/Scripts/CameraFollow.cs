@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Haro").transform;
-        camOffSet = new Vector3(0, 8, transform.position.z);
+        camOffSet = new Vector3(0, 7, transform.position.z);
 
     }
 

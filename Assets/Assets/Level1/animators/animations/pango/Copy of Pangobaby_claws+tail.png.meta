@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 173e5786fb202da4fa5289eb764d4581
+timeCreated: 1468290615
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Copy of Pangobaby_claws+tail_0
+    21300002: Copy of Pangobaby_claws+tail_1
+    21300004: Copy of Pangobaby_claws+tail_2
+    21300006: Copy of Pangobaby_claws+tail_3
+    21300008: Copy of Pangobaby_claws+tail_4
+    21300010: Copy of Pangobaby_claws+tail_5
+    21300012: Copy of Pangobaby_claws+tail_6
+    21300014: Copy of Pangobaby_claws+tail_7
+    21300016: Copy of Pangobaby_claws+tail_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Copy of Pangobaby_claws+tail_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 281
+        width: 18
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 280
+        width: 17
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_2
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 273
+        width: 21
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_3
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 280
+        width: 17
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_4
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 280
+        width: 17
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_5
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 273
+        width: 20
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_6
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 102
+        width: 18
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_7
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 102
+        width: 17
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Copy of Pangobaby_claws+tail_8
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 96
+        width: 21
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
