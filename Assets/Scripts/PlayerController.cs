@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     Animator animator;
     public Rigidbody2D rgd;
     public float jumpSpeed = 500000f;
-
+	public Boolean jumped = false;
     //animation states - the values in the animator conditions
     const int STATE_IDLE = 0;
     const int STATE_WALK = 1;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
     bool climbWalk = false;
     Vector3 handPosition;
 
-    int currentAnimationState = STATE_IDLE;
+    public int currentAnimationState = STATE_IDLE;
     string currentDirection = "left";
     
 
@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour {
 
 
         //allow horizontal movement when walking/sprinting > jump/ crouching
+	//	if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {animator.SetInteger("state", STATE_IDLE);}
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_Jump") ||
             this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") ||
             this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out") ||
@@ -159,25 +160,32 @@ public class PlayerController : MonoBehaviour {
         }
 
         //jump
-		if (Input.GetKey("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out")) {
-            
-
-            rgd.AddForce(Vector3.up * jumpSpeed);
-			Debug.Log ("w");
-            isGrounded = false;
-            isMoving = true;
-            //walk>jump , horizontal movemente allowed
-            if (Input.GetKey("right") || Input.GetKey("left")) {
-                animator.SetTrigger("WJump");
-                currentAnimationState = STATE_WALK_JUMP;
-
-            } else {
+		if (Input.GetKey ("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out")) {
+			
 				
-                //idle jump, no horzontal movement allowed (for now)
-                allowHorizontal = false;
-                currentAnimationState = STATE_IDLE_JUMP;
-                animator.SetInteger("state", STATE_IDLE_JUMP);
-            }
+			if (jumped == false) {
+				rgd.AddForce (Vector3.up * jumpSpeed);
+				jumped = true;
+			}
+			Debug.Log ("w");
+			new WaitForSeconds (0.02f);
+			isMoving = true;
+			//walk>jump , horizontal movemente allowed
+			if (Input.GetKey ("right") || Input.GetKey ("left")) {
+				animator.SetTrigger ("WJump");
+				currentAnimationState = STATE_WALK_JUMP;
+				isGrounded = false;
+
+			} else {
+				
+				//idle jump, no horzontal movement allowed (for now)
+				allowHorizontal = false;
+				currentAnimationState = STATE_IDLE_JUMP;
+				animator.SetInteger ("state", STATE_IDLE_JUMP);
+				isGrounded = false;
+			}
+		
+
         }
         else if (Input.GetKey("down") && isGrounded) {
             currentAnimationState = STATE_CROUCH;
@@ -191,6 +199,7 @@ public class PlayerController : MonoBehaviour {
 			}
 
         }
+
         //horizontal movement animations
         if ((Input.GetKeyDown("right") || Input.GetKey("right") || Input.GetKey("left") || Input.GetKeyDown("left")) && allowHorizontal )
         {
@@ -232,8 +241,8 @@ public class PlayerController : MonoBehaviour {
     {
 		if (coll.gameObject.name == "Floor" || coll.gameObject.name == "Moving_Rack")
 		{
-			currentAnimationState = STATE_IDLE;
-            isGrounded = true;
+			jumped = false;	
+
             if (currentAnimationState != STATE_IDLE) {
                 animator.SetInteger("state", STATE_IDLE);
                 currentAnimationState = STATE_IDLE;
@@ -244,8 +253,9 @@ public class PlayerController : MonoBehaviour {
 
     }
 	void OnCollisionStay2D(Collision2D coll)  {
-		
-		if(currentAnimationState == STATE_IDLE_JUMP){ Debug.Log("y");currentAnimationState = STATE_IDLE;}
+	//	if(!Input.GetKey("right") && !Input.GetKey("left") && !Input.GetKey("up") && !Input.GetKey("down"))
+	//	{animator.SetInteger("state", STATE_IDLE); currentAnimationState = STATE_IDLE;}
+		isGrounded = true;
 		feetContact = coll.contacts [0];
 		if (feetContact.point.x > 40.5 && feetContact.point.y < 42) {
 			if (Input.GetKey(KeyCode.E)){
