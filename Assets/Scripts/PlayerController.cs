@@ -233,8 +233,6 @@ public class PlayerController : MonoBehaviour {
 		if (coll.gameObject.name == "Floor" || coll.gameObject.name == "Moving_Rack")
 		{
 			currentAnimationState = STATE_IDLE;
-
-
             isGrounded = true;
             if (currentAnimationState != STATE_IDLE) {
                 animator.SetInteger("state", STATE_IDLE);
@@ -246,7 +244,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 	void OnCollisionStay2D(Collision2D coll)  {
-		//isGrounded = true;
+		
 		if(currentAnimationState == STATE_IDLE_JUMP){ Debug.Log("y");currentAnimationState = STATE_IDLE;}
 		feetContact = coll.contacts [0];
 		if (feetContact.point.x > 40.5 && feetContact.point.y < 42) {
