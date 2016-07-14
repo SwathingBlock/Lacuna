@@ -14,6 +14,6 @@ public class events : MonoBehaviour {
 	}
 	void Idle(int a){
 		
-		this.GetComponent<Animator> ().SetInteger ("state", a);
+
 	}
 }

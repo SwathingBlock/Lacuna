@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour {
     bool allowHorizontal = true;
 	ContactPoint2D feetContact;
 
+	//moving rack booleans
+	bool down = false;
+
 
     SpriteRenderer renderer;
     Animator animator;
@@ -37,14 +40,25 @@ public class PlayerController : MonoBehaviour {
     public int currentAnimationState = STATE_IDLE;
     string currentDirection = "left";
     
-
-    GameObject haro_anim;
-
+	Sprite none;
+    GameObject haro_anim , tie, rackCollider;
+	Vector3 rackInitPos;
 
     // Use this for initialization
     void Start() {
+
+
+		none = Resources.Load<Sprite> ("none");
+		//rackcollider
+		rackCollider = GameObject.Find ("RackCollider");
+		rackCollider.SetActive (false);
+		rackInitPos = rackCollider.transform.position;
+
+
+
+
         haro_anim = GameObject.Find("Haro_Animation");
-	
+		tie = GameObject.Find("Tie");
         animator = haro_anim.GetComponent<Animator>();
         renderer = haro_anim.GetComponent<SpriteRenderer>();
         rgd = GetComponent<Rigidbody2D>();
@@ -52,6 +66,7 @@ public class PlayerController : MonoBehaviour {
 
         animator.SetInteger("state", STATE_IDLE_JUMP);
 		currentAnimationState = STATE_IDLE;
+
 
     }
 
@@ -128,7 +143,7 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
-
+		animator.ResetTrigger ("WJump");
         //allow horizontal movement when walking/sprinting > jump/ crouching
 	//	if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {animator.SetInteger("state", STATE_IDLE);}
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_Jump") ||
@@ -258,8 +273,30 @@ public class PlayerController : MonoBehaviour {
 		isGrounded = true;
 		feetContact = coll.contacts [0];
 		if (feetContact.point.x > 40.5 && feetContact.point.y < 42) {
-			if (Input.GetKey(KeyCode.E)){
-				GameObject.Find ("Moving_Rack").GetComponent<Rigidbody2D> ().isKinematic = false;
+			if (Input.GetKeyDown(KeyCode.E)){
+				//up and down pull
+				if (down) {;
+					GameObject.Find ("Moving_Rack").transform.localPosition = new Vector3 (22.4f, 0f, 0.89f);
+
+
+					rackCollider.SetActive (false);
+
+					down = false;
+					Debug.Log ("up");
+					GameObject.Find("Moving_Rack").GetComponent<Rigidbody2D> ().isKinematic = true;
+					new WaitForSeconds (1);
+
+				} 
+
+				else {
+				}
+				GameObject.Find("Moving_Rack").GetComponent<Rigidbody2D> ().isKinematic = false;
+
+				rackCollider.SetActive (true);
+				down = true;
+				Debug.Log ("down");
+				new WaitForSeconds (1);
+
 			}
 		
 		}
@@ -274,11 +311,15 @@ public class PlayerController : MonoBehaviour {
             {
                 transform.Rotate(0, 180, 0);
                 currentDirection = "right";
+				tie.SetActive (true);
+				tie.GetComponent<SpriteRenderer> ().sprite = none;
             }
             else if (direction == "left")
             {
                 transform.Rotate(0, -180, 0);
                 currentDirection = "left";
+				tie.SetActive (false);
+				tie.GetComponent<SpriteRenderer> ().sprite = none;
             }
         }
 
