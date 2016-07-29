@@ -8,11 +8,21 @@ public class BodyAssets : MonoBehaviour {
 	void Start () {
 		tie = GameObject.Find ("Tie");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
-		Hstate = GameObject.Find ("Haro_Animation").GetComponent<Animator> ().GetInteger ("state");
-		tie.GetComponent<Animator> ().SetInteger ("state", Hstate);
+		if (GameObject.Find ("Haro_Animation").GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Walk")) {
+			if (Hstate != 1) {
+				Hstate = 1;
+				tie.GetComponent<Animator> ().SetInteger ("state", Hstate);
+			}
+		}
+
+		else {
+			Hstate = 0;
+			tie.GetComponent<Animator> ().SetInteger ("state", Hstate);
+		}
+
+
 	}
 }
