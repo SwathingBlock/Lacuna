@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public float walkSpeed = 8000f;
     private bool isGrounded = true;
+
     bool isMoving = false;
     bool allowHorizontal = true;
 	ContactPoint2D feetContact;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody2D rgd;
     public float jumpSpeed = 500000f;
 	public Boolean jumped = false;
+	public float jumpTime = 0f;
+	public float nextJump = 1f; 
     //animation states - the values in the animator conditions
     const int STATE_IDLE = 0;
     const int STATE_WALK = 1;
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 
 		none = Resources.Load<Sprite> ("none");
 		//rackcollider
-		rackCollider = GameObject.Find ("RackCollider");
+		rackCollider = GameObject.Find ("Rack1Impact");
 		rackCollider.SetActive (false);
 		rackInitPos = rackCollider.transform.position;
 
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-
+		
 		animator.ResetTrigger ("WJump");
         //allow horizontal movement when walking/sprinting > jump/ crouching
 	//	if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {animator.SetInteger("state", STATE_IDLE);}
@@ -175,9 +178,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         //jump
-		if (Input.GetKey ("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out")) {
-			
-				
+		if (Input.GetKey ("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out") && (Time.time > jumpTime)) {
+
+			jumpTime = Time.time + 0.5f;
+
 			if (jumped == false) {
 				rgd.AddForce (Vector3.up * jumpSpeed);
 				jumped = true;
@@ -216,17 +220,17 @@ public class PlayerController : MonoBehaviour {
         }
 
         //horizontal movement animations
-        if ((Input.GetKeyDown("right") || Input.GetKey("right") || Input.GetKey("left") || Input.GetKeyDown("left")) && allowHorizontal )
+		if (( Input.GetKey("left") || Input.GetKeyDown("left") || Input.GetKeyDown("right") || Input.GetKey("right") ) && allowHorizontal )
         {
             isMoving = true;
 			if (Input.GetKey("down")) {
-				Debug.Log ("player moving");
+				
 				animator.SetInteger ("state", STATE_CRAWL);
 				currentAnimationState = STATE_CRAWL;
 			} 
 			else {
 			
-				Debug.Log ("player moving");
+
 				if (Input.GetKey (KeyCode.LeftShift) && isGrounded) {
 					animator.SetInteger ("state", STATE_SPRINT);
 					currentAnimationState = STATE_SPRINT;
@@ -254,7 +258,7 @@ public class PlayerController : MonoBehaviour {
     // Check if player has collided with the floor
     void OnCollisionEnter2D(Collision2D coll)       //collision detection
     {
-		if (coll.gameObject.name == "Floor" || coll.gameObject.name == "Moving_Rack")
+		if (coll.gameObject.name == "Floor" || coll.gameObject.name == "Moving_Rack" || coll.gameObject.name == "FloorBase")
 		{
 			jumped = false;	
 
@@ -313,8 +317,9 @@ public class PlayerController : MonoBehaviour {
                 currentDirection = "right";
 				tie.SetActive (true);
 				tie.GetComponent<SpriteRenderer> ().sprite = none;
+				tie.GetComponent<Animator> ().SetInteger ("state", 1);
             }
-            else if (direction == "left")
+			else if (direction == "left")
             {
                 transform.Rotate(0, -180, 0);
                 currentDirection = "left";
