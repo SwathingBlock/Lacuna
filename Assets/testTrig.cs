@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class triggerPlat : MonoBehaviour {
-	
+public class testTrig : MonoBehaviour {
 
+	// Use this for initialization
 	void Start () {
 	
 	}
@@ -14,8 +14,7 @@ public class triggerPlat : MonoBehaviour {
 	}
 	void OnTriggerEnter2D (Collider2D other){
 		
-		Debug.Log("trigged1");
-		Physycs2D
+		Debug.Log("trigged");
 		
 	}
 }
