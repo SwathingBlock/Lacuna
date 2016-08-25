@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class triggerPlat : MonoBehaviour {
-	
+public class trig : MonoBehaviour {
 
+	// Use this for initialization
+	void OnTriggerEnter2D(Collider2D other){
+		
+		Debug.Log("ok");
+	}
 	void Start () {
 	
 	}
@@ -11,11 +15,5 @@ public class triggerPlat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-	void OnTriggerEnter2D (Collider2D other){
-		
-		Debug.Log("trigged1");
-		Physycs2D
-		
 	}
 }
