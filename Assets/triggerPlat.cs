@@ -15,7 +15,7 @@ public class triggerPlat : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other){
 		
 		Debug.Log("trigged1");
-		Physycs2D
+		
 		
 	}
 }

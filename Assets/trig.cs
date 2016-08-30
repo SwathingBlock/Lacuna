@@ -16,4 +16,18 @@ public class trig : MonoBehaviour {
 	void Update () {
 	
 	}
+	void onTriggerEnter2D (Collider2D other){
+		
+		
+	}
+	void onTriggerStay2D (Collider2D other){
+		
+	
+		
+	}
+	void onTriggerExit2D (Collider2D other){
+		
+		
+	}
+	
 }
