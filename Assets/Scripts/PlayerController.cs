@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
     public float walkSpeed = 8000f;
-    private bool isGrounded = true;
+    public bool isGrounded = true; // should be private acess
+    public int activeFloor = 0; // Counter for floor objects in contact
+    public bool landed = true;
+
 
     bool isMoving = false;
     bool allowHorizontal = true;
@@ -33,6 +37,8 @@ public class PlayerController : MonoBehaviour {
     const int STATE_CLIMB_IDLE = 7;
 	const int STATE_CRAWL = 8;
 	const int STATE_SPRINT = 9;
+    const int STATE_CRAWL_IDLE = 10;
+
 
     string wallClimbFileName;
     Vector2 imageOffset; // off the current image ( read on file name )
@@ -45,11 +51,17 @@ public class PlayerController : MonoBehaviour {
     
 	Sprite none;
     GameObject haro_anim , tie, rackCollider;
+    Transform transfrom;
 	Vector3 rackInitPos;
+
+    CollisionDetector collisionDetector;
+    public Boolean forcedCrouch;
+    public Boolean forcedCrawl;
 
     // Use this for initialization
     void Start() {
 
+        collisionDetector = new CollisionDetector();
 
 		none = Resources.Load<Sprite> ("none");
 		//rackcollider
@@ -65,9 +77,10 @@ public class PlayerController : MonoBehaviour {
         animator = haro_anim.GetComponent<Animator>();
         renderer = haro_anim.GetComponent<SpriteRenderer>();
         rgd = GetComponent<Rigidbody2D>();
+      //  transform = GetComponent<Transform>();
 
 
-        animator.SetInteger("state", STATE_IDLE_JUMP);
+        animator.SetInteger("state", STATE_IDLE);
 		currentAnimationState = STATE_IDLE;
 
 
@@ -145,10 +158,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-		
-		animator.ResetTrigger ("WJump");
+
         //allow horizontal movement when walking/sprinting > jump/ crouching
-	//	if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {animator.SetInteger("state", STATE_IDLE);}
+        //	if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {animator.SetInteger("state", STATE_IDLE);}
+        
+
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_Jump") ||
             this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") ||
             this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out") ||
@@ -157,65 +171,94 @@ public class PlayerController : MonoBehaviour {
             allowHorizontal = false;
         }
         else { allowHorizontal = true; }
-		if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crawl") ||
-		    this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle") ||
-		    this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out") ||
-		    this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In")) {
 
+        if (climbControll()) { Debug.Log("Haro climbing: blocking input"); return;}
 
-	
-		}
-        if (climbControll()) { Debug.Log("Haro climbing: blocking input"); return; } 
+        isGrounded = !jumpOver ? false : isGrounded; 
 
-
+        // isGrounded bugged ?
         //idle animation if no movement keys pressed
-		Debug.Log(isGrounded);
-        if (!Input.GetKeyDown("left") && !Input.GetKeyDown("right") && !Input.GetKeyDown("up") && !Input.GetKeyDown("down") && isGrounded == true) {
+        Debug.Log(isGrounded);
+
+        /*
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") &&
+            !Input.GetKey("down") && !Input.GetKeyDown("down"))
+                forcedCrouch = collisionDetector.CrouchToNormal(); // can't leave crouch, normal size collision detected
+                */
+        forcedCrouch = this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") || this.animator.GetCurrentAnimatorStateInfo(0).IsName("crawl") ?
+                       collisionDetector.CrouchToNormal() : false; // can't leave crouch, normal size collision detected
+        forcedCrawl = this.animator.GetCurrentAnimatorStateInfo(0).IsName("crawl") ?
+                      collisionDetector.CrawlToCrouch() : false; // can't leave crawl, crouch size collision detected
+
+        if (forcedCrawl || forcedCrouch) allowHorizontal = true; 
+
+        animator.SetBool("forcedCrouch", forcedCrouch);
+        animator.SetBool("forcedCrawl", forcedCrawl);
+
+        isMoving = Input.GetKeyDown("left") || Input.GetKeyDown("right") || Input.GetKeyDown("up") || Input.GetKeyDown("down");
+        // Automatic Idle 
+        if ( !isMoving && jumpOver && isGrounded == true && !forcedCrouch && !forcedCrawl ) {
             animator.SetInteger("state", STATE_IDLE);
             currentAnimationState = STATE_IDLE;
-            isMoving = false;
-
         }
 
+        if(!landed && jumpOver && isMoving)
+        {
+            animator.SetInteger("state", STATE_WALK);
+            currentAnimationState = STATE_WALK; 
+        }
+        
+        landed = !(animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_Jump") || animator.GetCurrentAnimatorStateInfo(0).IsName("Walk_Jump") );
+
         //jump
-		if (Input.GetKey ("up") && isGrounded && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In") && !this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out") && (Time.time > jumpTime)) {
+        if (!jumped && Input.GetKey ("up") && isGrounded &&  
+            ( this.animator.GetCurrentAnimatorStateInfo (0).IsName ("Walk") || this.animator.GetCurrentAnimatorStateInfo (0).IsName ("Idle")
+               || this.animator.GetCurrentAnimatorStateInfo(0).IsName("Sprint"))   
+            && Time.time > jumpTime  /*stopped jump crawl*/
+            && !forcedCrawl && !forcedCrouch && jumpOver) {
 
 			jumpTime = Time.time + 0.5f;
 
-			if (jumped == false) {
-				rgd.AddForce (Vector3.up * jumpSpeed);
-				jumped = true;
-			}
-			Debug.Log ("w");
-			new WaitForSeconds (0.02f);
+			rgd.AddForce (Vector3.up * jumpSpeed);
+
+            jumped = true;
+
+            landed = false;
+            jumpOver = false;
+
+            Debug.Log ("w");
+			//new WaitForSeconds (0.02f);
 			isMoving = true;
 			//walk>jump , horizontal movemente allowed
-			if (Input.GetKey ("right") || Input.GetKey ("left")) {
-				animator.SetTrigger ("WJump");
-				currentAnimationState = STATE_WALK_JUMP;
-				isGrounded = false;
+			if (Input.GetKey ("right") || Input.GetKeyDown("right") ||Input.GetKeyDown("left") || Input.GetKey ("left")) {
+                currentAnimationState = STATE_WALK_JUMP;
+                allowHorizontal = true;
+                animator.SetInteger("state", currentAnimationState);
 
 			} else {
 				
 				//idle jump, no horzontal movement allowed (for now)
 				allowHorizontal = false;
 				currentAnimationState = STATE_IDLE_JUMP;
-				animator.SetInteger ("state", STATE_IDLE_JUMP);
-				isGrounded = false;
+                animator.SetInteger("state", currentAnimationState);
 			}
 		
 
         }
-        else if (Input.GetKey("down") && isGrounded) {
+        else if (Input.GetKey("down") && isGrounded && landed && !forcedCrouch && !forcedCrawl )
+        { 
+
             currentAnimationState = STATE_CROUCH;
             animator.SetInteger("state", STATE_CROUCH);
 
-			if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Idle")) {
-				allowHorizontal = true;
-			}
-			if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_Out") || this.animator.GetCurrentAnimatorStateInfo (0).IsName ("crouch_In")) {
-				allowHorizontal = false;
-			}
+           if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle"))
+            {
+                allowHorizontal = true;
+            }
+            else if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out") || this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_In"))
+            {
+                allowHorizontal = false;
+            }
 
         }
 
@@ -223,22 +266,31 @@ public class PlayerController : MonoBehaviour {
 		if (( Input.GetKey("left") || Input.GetKeyDown("left") || Input.GetKeyDown("right") || Input.GetKey("right") ) && allowHorizontal )
         {
             isMoving = true;
-			if (Input.GetKey("down")) {
-				
-				animator.SetInteger ("state", STATE_CRAWL);
-				currentAnimationState = STATE_CRAWL;
-			} 
-			else {
-			
 
-				if (Input.GetKey (KeyCode.LeftShift) && isGrounded) {
-					animator.SetInteger ("state", STATE_SPRINT);
-					currentAnimationState = STATE_SPRINT;
-				} else {
-					animator.SetInteger ("state", STATE_WALK);
-					currentAnimationState = STATE_WALK;
-				}
-			}
+            if (isGrounded && landed)
+            {
+                if (forcedCrawl && animator.speed == 0) animator.speed = 1;
+                // Identify animator state
+                if (Input.GetKey("down") || forcedCrawl || forcedCrouch)
+                {
+
+                    animator.SetInteger("state", STATE_CRAWL);
+                    currentAnimationState = STATE_CRAWL;
+                }
+                else {
+
+                    if (Input.GetKey(KeyCode.LeftShift) && (animator.GetCurrentAnimatorStateInfo(0).IsName("Sprint") || animator.GetCurrentAnimatorStateInfo(0).IsName("Walk") ))
+                    {
+                        animator.SetInteger("state", STATE_SPRINT);
+                        currentAnimationState = STATE_SPRINT;
+                    }
+                    else {
+                        animator.SetInteger("state", STATE_WALK);
+                        currentAnimationState = STATE_WALK;
+                    }
+                }
+            }
+            //Apply movement
 			if (currentAnimationState == STATE_WALK_JUMP) {
 				transform.Translate (Vector2.left * (walkSpeed * 1.9f) * Time.deltaTime);
 			} else if (currentAnimationState == STATE_SPRINT) {
@@ -247,35 +299,85 @@ public class PlayerController : MonoBehaviour {
 			else{
                 transform.Translate(Vector2.left * walkSpeed * Time.deltaTime);
             }
+
+        } else { /* No movoment */
+            if (forcedCrawl) animator.speed = 0;
+            if (forcedCrouch) {            
+                currentAnimationState = STATE_CROUCH;
+                animator.SetInteger("state", STATE_CROUCH);
+            }
+            //if (forcedCrawl) animator.SetInteger("state", STATE_CRAWL_IDLE);
         }
+
+
         if (Input.GetKey("left") && !Input.GetKey("right")) changeDirection("left");		//change direction
         else if (Input.GetKey("right") && !Input.GetKey("left")) changeDirection("right");
 
 
     }
 
-    
+    bool TouchingFloorCheck(Collision2D coll)
+    {
+        Collider2D collider = coll.collider;
+        bool res = false;
+
+        if (collider.CompareTag("Floor"))
+        {
+            Vector3 center = collider.bounds.center;
+            Vector3 contact = coll.contacts[0].point;
+
+            
+
+            if (contact.y > center.y) // Confirming it's floor instead of ceilling
+                res = true;
+        }
+        return res;
+    }
+
+
+    List<Collider2D> floorColliders = new List<Collider2D>();
+    public bool jumpOver = true;
     // Check if player has collided with the floor
     void OnCollisionEnter2D(Collision2D coll)       //collision detection
     {
-		if (coll.gameObject.name == "Floor" || coll.gameObject.name == "Moving_Rack" || coll.gameObject.name == "FloorBase")
-		{
-			jumped = false;	
 
-            if (currentAnimationState != STATE_IDLE) {
-                animator.SetInteger("state", STATE_IDLE);
-                currentAnimationState = STATE_IDLE;
-            }
-		
+        Collider2D collider = coll.collider;
+        if (TouchingFloorCheck(coll))
+        {
+            jumped = false;
+            jumpOver = true;
+            isGrounded = true;
+            floorColliders.Add(collider);
+            activeFloor = floorColliders.Count;
+
         }
-      
 
     }
+
+    void OnCollisionExit2D(Collision2D coll)
+    {
+
+        Collider2D collider = coll.collider;
+        
+        floorColliders.Remove(collider);
+        activeFloor = floorColliders.Count;
+
+        isGrounded = activeFloor == 0 ? false : true;
+
+    }
+
 	void OnCollisionStay2D(Collision2D coll)  {
-	//	if(!Input.GetKey("right") && !Input.GetKey("left") && !Input.GetKey("up") && !Input.GetKey("down"))
-	//	{animator.SetInteger("state", STATE_IDLE); currentAnimationState = STATE_IDLE;}
-		isGrounded = true;
-		feetContact = coll.contacts [0];
+        //	if(!Input.GetKey("right") && !Input.GetKey("left") && !Input.GetKey("up") && !Input.GetKey("down"))
+        //	{animator.SetInteger("state", STATE_IDLE); currentAnimationState = STATE_IDLE;}
+
+        activeFloor = floorColliders.Count;
+        isGrounded = activeFloor > 0;
+
+
+        // todo: move racks code, delete the rest 
+
+
+        feetContact = coll.contacts [0];
 		if (feetContact.point.x > 40.5 && feetContact.point.y < 42) {
 			if (Input.GetKeyDown(KeyCode.E)){
 				//up and down pull
