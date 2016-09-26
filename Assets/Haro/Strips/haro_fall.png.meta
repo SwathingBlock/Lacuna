@@ -1,0 +1,322 @@
+fileFormatVersion: 2
+guid: f0e07dac430d382488d559a07f4efa55
+timeCreated: 1474685559
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: haro_fall_0
+    21300002: haro_fall_1
+    21300004: haro_fall_2
+    21300006: haro_fall_3
+    21300008: haro_fall_4
+    21300010: haro_fall_5
+    21300012: haro_fall_6
+    21300014: haro_fall_7
+    21300016: haro_fall_8
+    21300018: haro_fall_9
+    21300020: haro_fall_10
+    21300022: haro_fall_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: haro_fall_0
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 3044
+        width: 249
+        height: 484
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 64.072845, y: 146.66113}
+        - {x: 31.072845, y: 245.66113}
+        - {x: -50.927155, y: 245.66113}
+        - {x: -62.927155, y: 231.66113}
+        - {x: -62.927155, y: 72.66113}
+        - {x: -57.927155, y: 65.66113}
+        - {x: -0.92715454, y: -0.3388672}
+        - {x: 18.072845, y: -0.3388672}
+        - {x: 41.072845, y: 17.661133}
+        - {x: 42.072845, y: 22.661133}
+        - {x: 53.072845, y: 23.661133}
+        - {x: 64.072845, y: 33.661133}
+    - name: haro_fall_1
+      rect:
+        serializedVersion: 2
+        x: 1391
+        y: 3040
+        width: 236
+        height: 475
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 60.399475, y: 80.862915}
+        - {x: 60.399475, y: 219.86292}
+        - {x: 25.399475, y: 240.86292}
+        - {x: -59.600525, y: 240.86292}
+        - {x: -59.600525, y: 42.862915}
+        - {x: -2.600525, y: 2.862915}
+        - {x: 1.3994751, y: -0.13708496}
+        - {x: 15.399475, y: -0.13708496}
+        - {x: 36.399475, y: 36.862915}
+        - {x: 35.399475, y: 44.862915}
+        - {x: 32.399475, y: 45.862915}
+    - name: haro_fall_2
+      rect:
+        serializedVersion: 2
+        x: 2394
+        y: 3044
+        width: 245
+        height: 495
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 36.09558, y: 250.94238}
+        - {x: 18.095581, y: 250.94238}
+        - {x: 14.095581, y: 238.94238}
+        - {x: 16.095581, y: 227.94238}
+        - {x: -22.904419, y: 237.94238}
+        - {x: -61.90442, y: 239.94238}
+        - {x: -61.90442, y: 71.94238}
+        - {x: -11.904419, y: -0.057617188}
+        - {x: 29.095581, y: -0.057617188}
+        - {x: 63.09558, y: 45.942383}
+        - {x: 63.09558, y: 195.94238}
+        - {x: 54.09558, y: 243.94238}
+      - - {x: -29.904419, y: 154.94238}
+        - {x: -28.904419, y: 151.94238}
+        - {x: -25.904419, y: 151.94238}
+        - {x: -23.904419, y: 153.94238}
+        - {x: -24.904419, y: 156.94238}
+        - {x: -27.904419, y: 156.94238}
+    - name: haro_fall_3
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 3038
+        width: 272
+        height: 525
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -0.5888672, y: 265.99353}
+        - {x: -22.588867, y: 249.99353}
+        - {x: -19.588867, y: 223.99353}
+        - {x: -49.588867, y: 221.99353}
+        - {x: -67.58887, y: 207.99353}
+        - {x: -67.58887, y: 199.99353}
+        - {x: -14.588867, y: 13.99353}
+        - {x: 5.411133, y: -0.0064697266}
+        - {x: 44.411133, y: -0.0064697266}
+        - {x: 70.41113, y: 9.99353}
+        - {x: 70.41113, y: 246.99353}
+        - {x: 52.411133, y: 265.99353}
+    - name: haro_fall_4
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 2025
+        width: 381
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.3530884, y: -0.2730713}
+        - {x: 2.6469116, y: 0.7269287}
+        - {x: 25.646912, y: 6.7269287}
+        - {x: 29.646912, y: 9.726929}
+        - {x: 31.646912, y: 9.726929}
+        - {x: 36.64691, y: 10.726929}
+        - {x: 29.646912, y: 8.726929}
+        - {x: 23.646912, y: 4.7269287}
+        - {x: 23.646912, y: 1.7269287}
+        - {x: 24.646912, y: -0.2730713}
+        - {x: 75.64691, y: -0.2730713}
+        - {x: 97.64691, y: 23.726929}
+        - {x: 97.64691, y: 117.72693}
+        - {x: 48.64691, y: 129.72693}
+        - {x: -70.35309, y: 129.72693}
+        - {x: -96.35309, y: 42.72693}
+        - {x: -96.35309, y: -0.2730713}
+        - {x: -77.35309, y: -0.2730713}
+        - {x: -61.35309, y: 1.7269287}
+        - {x: -59.35309, y: 5.7269287}
+        - {x: -57.35309, y: -0.2730713}
+    - name: haro_fall_5
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 2216
+        width: 12
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: haro_fall_6
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 2025
+        width: 378
+        height: 237
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -88.70813, y: 119.92297}
+        - {x: -95.70813, y: 99.92297}
+        - {x: -95.70813, y: -0.07702637}
+        - {x: 96.29187, y: -0.07702637}
+        - {x: 96.29187, y: 119.92297}
+    - name: haro_fall_7
+      rect:
+        serializedVersion: 2
+        x: 2356
+        y: 2028
+        width: 280
+        height: 338
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -70.62024, y: 171.9768}
+        - {x: -70.62024, y: 14.976807}
+        - {x: -32.62024, y: 7.9768066}
+        - {x: -16.62024, y: 55.976807}
+        - {x: -13.620239, y: 40.976807}
+        - {x: -8.620239, y: 31.976807}
+        - {x: -3.6202393, y: 31.976807}
+        - {x: 10.379761, y: 26.976807}
+        - {x: 21.37976, y: -0.02319336}
+        - {x: 56.37976, y: -0.02319336}
+        - {x: 71.37976, y: 20.976807}
+        - {x: 71.37976, y: 119.97681}
+        - {x: -10.620239, y: 171.9768}
+    - name: haro_fall_8
+      rect:
+        serializedVersion: 2
+        x: 3361
+        y: 2025
+        width: 274
+        height: 422
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58.41284, y: 213.69824}
+        - {x: -69.41284, y: 203.69824}
+        - {x: -69.41284, y: 40.698242}
+        - {x: -15.412842, y: -0.3017578}
+        - {x: 70.58716, y: -0.3017578}
+        - {x: 70.58716, y: 149.69824}
+        - {x: -15.412842, y: 213.69824}
+    - name: haro_fall_9
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 1019
+        width: 247
+        height: 516
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.79457, y: -0.2479248}
+        - {x: 62.79457, y: -0.2479248}
+        - {x: 63.79457, y: 1.7520752}
+        - {x: 63.79457, y: 26.752075}
+        - {x: 27.79457, y: 204.75208}
+        - {x: -17.20543, y: 261.75208}
+        - {x: -61.20543, y: 261.75208}
+        - {x: -61.20543, y: 130.75208}
+        - {x: -38.20543, y: -0.2479248}
+        - {x: 21.79457, y: -0.2479248}
+        - {x: 32.79457, y: 12.752075}
+        - {x: 32.79457, y: 17.752075}
+        - {x: 42.79457, y: 11.752075}
+        - {x: 29.79457, y: 4.752075}
+    - name: haro_fall_10
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1019
+        width: 183
+        height: 587
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.5037231, y: 297.70374}
+        - {x: -46.503723, y: 297.70374}
+        - {x: -46.503723, y: 54.703735}
+        - {x: -40.503723, y: -0.29626465}
+        - {x: 34.496277, y: -0.29626465}
+        - {x: 46.496277, y: 18.703735}
+        - {x: 46.496277, y: 161.70374}
+        - {x: 12.496277, y: 291.70374}
+    - name: haro_fall_11
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 1852
+        width: 299
+        height: 732
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
