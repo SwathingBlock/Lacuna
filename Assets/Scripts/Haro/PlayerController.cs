@@ -65,6 +65,13 @@ public class PlayerController : MonoBehaviour {
     HaroGrabArea grabCollider;
     public bool onLedgeZone;
 
+    /*
+    public void OnAnimatorMove() {
+        // transform.position = animator.
+       // animator.ApplyBuiltinRootMotion();
+
+    }
+    */
 
     // Use this for initialization
     void Start() {
@@ -111,6 +118,8 @@ public class PlayerController : MonoBehaviour {
     // Returns true if input is blocked
     bool climbControll()
     {
+
+
         // Start climibing
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.ledge_grab")
             || this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.wall_grab")){
@@ -138,46 +147,39 @@ public class PlayerController : MonoBehaviour {
         if(climb && this.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= (1/14)*13 && (Input.GetKey("left") || Input.GetKey("right")) )
                 animator.SetBool("climbToWalk", true);
 
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("climb_to_walk"))
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.climb_to_walk"))
         {
-            transform.Translate(Vector2.left * walkSpeed * Time.deltaTime); // Apply movement
+       //     transform.Translate(Vector2.left * walkSpeed * Time.deltaTime); // Apply movement
             currentAnimationState = STATE_WALK;
         }
 
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("climb_to_idle")) currentAnimationState = STATE_IDLE;
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.climb_to_idle")) currentAnimationState = STATE_IDLE;
 
         //       Blocks user Input while performing climbing animations 
-        if (climb || this.animator.GetCurrentAnimatorStateInfo(0).IsName("climb_to_walk") 
-            || this.animator.GetCurrentAnimatorStateInfo(0).IsName("climb_to_idle"))  return true;
-                else return false;
-
+        if (climb || this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.climb_to_walk")
+            || this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.climb_to_idle")) return true;
+        else
+        {
+        //    rgd.isKinematic = false;
+            return false;
+        }
     }
 
-    bool climbing = false;
+    public bool climbing = false;
 
     // HaroGrabArea invokes this method when haro's grabzone triggers
     // Starts ledge grab
     public void OnGrabLedge(Vector3 grabPoint){
 
-        Debug.Log(currentDirection);
-        Debug.Log(grabPoint);
-        Debug.Log(transform.position);
-
-
-
-    //    if (currentDirection == "right" && (transform.position.x < grabPoint.x ) ) return;
-
-     //   if (currentDirection == "left" && (transform.position.x - grabPoint.x < 0)) return; 
 
         if(!climbing) {// initiate ledge grab
 
-
+            animator.SetBool("climbToWalk", false); // reset value
             falling = false;
             rgd.isKinematic = true;// disables physics
             animator.SetTrigger("tg_grab_ledge");
             this.transform.position = grabPoint;
             climbing = true;
-            animator.SetBool("climbToWalk", false); // reset value
         }
     }
 
@@ -186,9 +188,13 @@ public class PlayerController : MonoBehaviour {
 
         //allow horizontal movement when walking/sprinting > jump/ crouching
 
-        if (climbing = climbControll()) {  return; }
+        if (climbing = climbControll()) { return; }
+        //    rgd.isKinematic = false;
 
-        if (rgd.isKinematic == true) { rgd.isKinematic = false; } // enables physics
+
+        //        if (rgd.isKinematic == true) { rgd.isKinematic = false; } // enables physics
+
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Fall_Start")) return;
 
 
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_Jump") ||
@@ -215,8 +221,8 @@ public class PlayerController : MonoBehaviour {
             {
                 animator.SetTrigger("tg_edge_fall");
                 falling = true;
+                return;
             }
-            Debug.Log(feetMissesFloor);
         }
 
 
@@ -224,7 +230,7 @@ public class PlayerController : MonoBehaviour {
         //idle animation if no movement keys pressed
         //Debug.Log(isGrounded);
 
-     
+
         forcedCrouch = this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") || this.animator.GetCurrentAnimatorStateInfo(0).IsName("crawl") ?
                        collisionDetector.CrouchToNormal() : false; // can't leave crouch, normal size collision detected
         forcedCrawl = this.animator.GetCurrentAnimatorStateInfo(0).IsName("crawl") ?
@@ -266,7 +272,6 @@ public class PlayerController : MonoBehaviour {
             landed = false;
             jumpOver = false;
 
-            Debug.Log ("w");
 			//new WaitForSeconds (0.02f);
 			isMoving = true;
 			//walk>jump , horizontal movemente allowed
@@ -361,26 +366,22 @@ public class PlayerController : MonoBehaviour {
     private float floorCheckDist = 0.4f; /* 1.6/4 */ 
     bool FeetMissFloor(){
         float a = haroSize.x / 4;
-
-        Debug.Log(transform.position);
-        Debug.Log(transform.localPosition);
-        Debug.Log(a);
+      
 
         // Test left ray
         Vector2 halfRight = new Vector2(transform.position.x, transform.position.y - 0.05f);
-        halfRight.x += a;
+        halfRight.x += a/2;
 
         Ray rayR = new Ray(halfRight, Vector2.down);
         Debug.DrawRay(halfRight, Vector2.down, Color.yellow, 0.1f);
 
         RaycastHit2D rightHitInfo = Physics2D.Raycast(rayR.origin, rayR.direction, a);
 
-        Debug.Log(rightHitInfo);
 
         bool rightHit = Physics2D.Raycast(rayR.origin,rayR.direction,a); 
 
         Vector2 halfLeft = new Vector2(transform.position.x, transform.position.y - 0.05f);
-        halfLeft.x -= a;
+        halfLeft.x -= a/2;
 
         Ray rayL = new Ray(halfLeft , Vector2.down);
 
@@ -484,7 +485,6 @@ public class PlayerController : MonoBehaviour {
 					rackCollider.SetActive (false);
 
 					down = false;
-					Debug.Log ("up");
 					GameObject.Find("Moving_Rack").GetComponent<Rigidbody2D> ().isKinematic = true;
 					new WaitForSeconds (1);
 
@@ -496,7 +496,6 @@ public class PlayerController : MonoBehaviour {
 
 				rackCollider.SetActive (true);
 				down = true;
-				Debug.Log ("down");
 				new WaitForSeconds (1);
 
 			}
@@ -524,38 +523,8 @@ public class PlayerController : MonoBehaviour {
 				tie.SetActive (false);
 				tie.GetComponent<SpriteRenderer> ().sprite = none;
             }
-        }
-
+        }	
 		
-		
-		
-		
-		
-    }
-
-    Vector3 parseOffset(string name) {
-        Vector3 r = new Vector3(0,0,0);
-        string[] p = name.Split('_');
-
-        for (int i = 0; i < p.Length; i++) {
-            char[] a = p[i].ToCharArray();
-            
-            char id = Char.ToUpper(a[0]);
-            if (!(id == 'W' || id == 'H')) break;
-
-            char[] value = new char[10];
-            for (int j = 1; j < value.Length-1 && j < a.Length; j++)
-                value[j - 1] = a[j];
-
-            int v = 0;
-            if (Int32.TryParse(value.ToString(), out v))
-            {
-                if (id == 'W') r.x = v;
-                else if (id == 'H') r.y = v;
-            }
-
-        }
-       return r;
     }
 
 
