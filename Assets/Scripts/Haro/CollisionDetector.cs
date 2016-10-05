@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-public class CollisionDetector : MonoBehaviour
+public class CollisionDetector 
 {
     BoxCollider2D crouchCol;
     BoxCollider2D haroCol;
@@ -12,7 +12,6 @@ public class CollisionDetector : MonoBehaviour
 
     public CollisionDetector()
     {
-        GameObject geometric_info = GameObject.Find("HaroGeometricData");
         crouchCol = GameObject.Find("CrouchSize").GetComponent<BoxCollider2D>();
         haroCol = GameObject.Find("HaroSize").GetComponent<BoxCollider2D>();
         crawlCol = GameObject.Find("CrawlSize").GetComponent<BoxCollider2D>();

@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour {
 	bool down = false;
 
 
-    SpriteRenderer renderer;
     Animator animator;
     public Rigidbody2D rgd;
     public float jumpSpeed = 500000f;
@@ -62,22 +61,13 @@ public class PlayerController : MonoBehaviour {
     public Boolean forcedCrouch;
     public Boolean forcedCrawl;
 
-    HaroGrabArea grabCollider;
+    
     public bool onLedgeZone;
-
-    /*
-    public void OnAnimatorMove() {
-        // transform.position = animator.
-       // animator.ApplyBuiltinRootMotion();
-
-    }
-    */
 
     // Use this for initialization
     void Start() {
 
         collisionDetector = new CollisionDetector();
-        grabCollider = new HaroGrabArea();
 
 		none = Resources.Load<Sprite> ("none");
 		//rackcollider
@@ -94,7 +84,6 @@ public class PlayerController : MonoBehaviour {
         haro_anim = GameObject.Find("Haro_Animation");
 		tie = GameObject.Find("Tie");
         animator = haro_anim.GetComponent<Animator>();
-        renderer = haro_anim.GetComponent<SpriteRenderer>();
         rgd = GetComponent<Rigidbody2D>();
       //  transform = GetComponent<Transform>();
 
@@ -189,10 +178,7 @@ public class PlayerController : MonoBehaviour {
         //allow horizontal movement when walking/sprinting > jump/ crouching
 
         if (climbing = climbControll()) { return; }
-        //    rgd.isKinematic = false;
 
-
-        //        if (rgd.isKinematic == true) { rgd.isKinematic = false; } // enables physics
 
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Fall_Start")) return;
 
@@ -208,7 +194,7 @@ public class PlayerController : MonoBehaviour {
 
  
         isGrounded = !jumpOver ? false : isGrounded;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fall_End"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Fall.Fall_End") || animator.GetCurrentAnimatorStateInfo(0).IsName("Fall.Fall_End_Soft"))
         {
             falling = false;
             isGrounded = true;
