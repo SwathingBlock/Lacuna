@@ -12,5 +12,6 @@ public class UpdateRootMotion : StateMachineBehaviour {
     {
         animator.transform.parent.position = animator.transform.position;
         animator.transform.localPosition = Vector3.zero;
+
     }
 }

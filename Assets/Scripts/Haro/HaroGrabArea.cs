@@ -13,10 +13,10 @@ public class HaroGrabArea : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
         {
         // ignore non grab zones
-        if (other.CompareTag("Ledge"))
+        if (other.CompareTag("Ledge") || other.CompareTag("Wall_Edge"))
         {
             activeColliders.Add(other);
-            SendMessageUpwards("OnGrabLedge", other.transform.position);
+            SendMessageUpwards("OnGrabLedge",other);
         }
         counter = activeColliders.Count;
         }

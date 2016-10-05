@@ -115,7 +115,8 @@ public class PlayerController : MonoBehaviour {
             return true;
         }
 
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.ledge_idle")) {
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.ledge_idle") 
+            || this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.wall_idle")) {
             if (Input.GetKey("up"))
                 animator.SetTrigger("tg_climb");
             else if (Input.GetKey("down"))
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour {
         // (1 / total_frames) * frame_number normalized animation time
         // ledge climb -> 14 frames
         // last climb frame check for movement
-        if(climb && this.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= (1/14)*13 && (Input.GetKey("left") || Input.GetKey("right")) )
+        if(climb && this.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f && (Input.GetKey("left") || Input.GetKey("right")) )
                 animator.SetBool("climbToWalk", true);
 
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("LedgeGrab.climb_to_walk"))
@@ -158,15 +159,18 @@ public class PlayerController : MonoBehaviour {
 
     // HaroGrabArea invokes this method when haro's grabzone triggers
     // Starts ledge grab
-    public void OnGrabLedge(Vector3 grabPoint){
+    public void OnGrabLedge(Collider2D col){
 
+        Vector3 grabPoint = col.transform.position;
 
-        if(!climbing) {// initiate ledge grab
+        if (!climbing) {// initiate ledge grab
 
             animator.SetBool("climbToWalk", false); // reset value
             falling = false;
             rgd.isKinematic = true;// disables physics
-            animator.SetTrigger("tg_grab_ledge");
+
+            if (col.CompareTag("Ledge")) animator.SetTrigger("tg_grab_ledge");
+            else /*Wall_Edge tag*/ animator.SetTrigger("tg_grab_wall");
             this.transform.position = grabPoint;
             climbing = true;
         }
@@ -349,7 +353,10 @@ public class PlayerController : MonoBehaviour {
 
     Vector2 haroSize = new Vector2(1.6f, 6.06f);
 
-    private float floorCheckDist = 0.4f; /* 1.6/4 */ 
+    private float floorCheckDist = 0.4f; /* 1.6/4 */
+
+    /* It only returns true if one feet misses the floor
+        If both feet misses returns false */
     bool FeetMissFloor(){
         float a = haroSize.x / 4;
       
@@ -375,6 +382,7 @@ public class PlayerController : MonoBehaviour {
 
         bool leftHit = Physics2D.Raycast(rayL.origin,rayL.direction, a);
 
+        if (!leftHit && !rightHit) return false;
         if (!leftHit && this.currentDirection == "left") return true;
         if (!rightHit && this.currentDirection == "right") return true;
 
