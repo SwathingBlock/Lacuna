@@ -183,18 +183,14 @@ public class PlayerController : MonoBehaviour {
 
         if (climbing = climbControll()) { return; }
 
-
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Fall_Start")) return;
-
-
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Idle_Jump") ||
             this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Idle") ||
             this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_Out") ||
-            this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_In")
+            this.animator.GetCurrentAnimatorStateInfo(0).IsName("crouch_In") ||
+            this.animator.GetCurrentAnimatorStateInfo(0).IsName("Fall_Start")
             ) {
             allowHorizontal = false;
-        }
-        else { allowHorizontal = true; }
+        }  else { allowHorizontal = true; }
 
  
         isGrounded = !jumpOver ? false : isGrounded;
@@ -210,6 +206,15 @@ public class PlayerController : MonoBehaviour {
             if (feetMissesFloor = FeetMissFloor())
             {
                 animator.SetTrigger("tg_edge_fall");
+
+                Vector2 edgeFallForce = new Vector2(-30000, -30000);
+
+                if (currentDirection == "right")
+                {
+                    rgd.AddForce(new Vector2(14000,14000));
+                }
+                else rgd.AddForce(edgeFallForce);
+
                 falling = true;
                 return;
             }
@@ -355,14 +360,28 @@ public class PlayerController : MonoBehaviour {
 
     private float floorCheckDist = 0.4f; /* 1.6/4 */
 
+
+    // Returns true if it hits Tagged floor
+     bool RayCastFloor(Ray r,float distance) {
+
+        bool hit = false;
+        RaycastHit2D[] results = Physics2D.RaycastAll(r.origin, r.direction, distance);
+
+        for (int i = 0; i < results.Length && !hit; i++)
+            hit = results[i].collider.CompareTag("Floor");
+
+        return hit;
+    }
+
     /* It only returns true if one feet misses the floor
         If both feet misses returns false */
     bool FeetMissFloor(){
         float a = haroSize.x / 4;
-      
+
+     //   return false;//Remove me
 
         // Test left ray
-        Vector2 halfRight = new Vector2(transform.position.x, transform.position.y - 0.05f);
+        Vector2 halfRight = new Vector2(transform.position.x, transform.position.y + a / 2);
         halfRight.x += a/2;
 
         Ray rayR = new Ray(halfRight, Vector2.down);
@@ -370,17 +389,16 @@ public class PlayerController : MonoBehaviour {
 
         RaycastHit2D rightHitInfo = Physics2D.Raycast(rayR.origin, rayR.direction, a);
 
+        bool rightHit = RayCastFloor(rayR,a); 
 
-        bool rightHit = Physics2D.Raycast(rayR.origin,rayR.direction,a); 
-
-        Vector2 halfLeft = new Vector2(transform.position.x, transform.position.y - 0.05f);
+        Vector2 halfLeft = new Vector2(transform.position.x, transform.position.y + a / 2);
         halfLeft.x -= a/2;
 
         Ray rayL = new Ray(halfLeft , Vector2.down);
 
         Debug.DrawRay(halfLeft, Vector2.down, Color.green, 0.1f);
 
-        bool leftHit = Physics2D.Raycast(rayL.origin,rayL.direction, a);
+        bool leftHit = RayCastFloor(rayL, a);
 
         if (!leftHit && !rightHit) return false;
         if (!leftHit && this.currentDirection == "left") return true;
@@ -394,7 +412,7 @@ public class PlayerController : MonoBehaviour {
         Collider2D collider = coll.collider;
         bool res = false;
 
-        if (collider.CompareTag("Floor"))
+        if (collider.CompareTag("Floor") )
         {
             Vector3 center = collider.bounds.center;
             Vector3 contact = coll.contacts[0].point;
