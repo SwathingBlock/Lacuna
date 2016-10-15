@@ -5,6 +5,10 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 
+# lvl 1 stuff
+/Assets/Assets/GreyOrchard/*
+/Assets/Scenes/Grey_Desert*
+
 # Extra git 
 .gitattributes
 

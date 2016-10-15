@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
+
         collisionDetector = new CollisionDetector();
 
 		none = Resources.Load<Sprite> ("none");
@@ -258,12 +259,16 @@ public class PlayerController : MonoBehaviour {
             && Time.time > jumpTime  /*stopped jump crawl*/
             && !forcedCrawl && !forcedCrouch && jumpOver) {
 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                animator.SetBool("jump_boost", true);
+                Debug.Log("Boosted_Jump");
+            }
 			jumpTime = Time.time + 0.5f;
 
 			rgd.AddForce (Vector3.up * jumpSpeed);
 
             jumped = true;
-
             landed = false;
             jumpOver = false;
 
@@ -331,13 +336,16 @@ public class PlayerController : MonoBehaviour {
                 }
             }
             //Apply movement
-			if (currentAnimationState == STATE_WALK_JUMP) {
-				transform.Translate (Vector2.left * (walkSpeed * 1.9f) * Time.deltaTime);
+            Vector2 dir = flipped ? Vector2.right : Vector2.left;
+
+            if (animator.GetBool("jump_boost")){
+                transform.Translate(dir * (walkSpeed * (2.8f + 0.5f)) * Time.deltaTime);
+            } else if (currentAnimationState == STATE_WALK_JUMP) {
+				transform.Translate (dir * (walkSpeed * 1.9f) * Time.deltaTime);
 			} else if (currentAnimationState == STATE_SPRINT) {
-				transform.Translate (Vector2.left * (walkSpeed * 2.8f) * Time.deltaTime);
-			}
-			else{
-                transform.Translate(Vector2.left * walkSpeed * Time.deltaTime);
+				transform.Translate (dir * (walkSpeed * 2.8f) * Time.deltaTime);
+			} else{
+                transform.Translate(dir * walkSpeed * Time.deltaTime);
             }
 
         } else { /* No movoment */
@@ -515,6 +523,8 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+    Boolean flipped = false;
+    Vector3 flip = Vector3.one;
     void changeDirection(string direction)
     {
 
@@ -522,21 +532,36 @@ public class PlayerController : MonoBehaviour {
         {
             if (direction == "right")
             {
-                transform.Rotate(0, 180, 0);
+                //                transform.Rotate(0, 180, 0);
+                flipped = true; flip.x=-1;
+                Vector3 ns = transform.localScale; ns.Scale(flip);
+                transform.localScale = ns;
+
                 currentDirection = "right";
-				tie.SetActive (true);
+                /*
+                tie.SetActive (true);
 				tie.GetComponent<SpriteRenderer> ().sprite = none;
 				tie.GetComponent<Animator> ().SetInteger ("state", 1);
+                */
             }
 			else if (direction == "left")
             {
-                transform.Rotate(0, -180, 0);
+                flipped = false; flip.x=-1;
+                Vector3 ns = transform.localScale; ns.Scale(flip);
+                flip = Vector3.one;
+
+                transform.localScale = ns;
+
                 currentDirection = "left";
-				tie.SetActive (false);
+                /*
+                tie.SetActive (false);
 				tie.GetComponent<SpriteRenderer> ().sprite = none;
+                */
             }
-        }	
-		
+         
+            //transform.localScale.Scale(flip);
+        }
+
     }
 
 
